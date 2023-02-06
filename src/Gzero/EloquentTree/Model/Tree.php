@@ -278,7 +278,8 @@ abstract class Tree extends \Eloquent {
                     $root         = $this;
                 }
                 if (isset($presenter) and class_exists($presenter)) {
-                    $refs[$index]->_addChildToCollection(new $presenter($node));
+					$new_node = new $presenter($node);
+                    $refs[$index]->_addChildToCollection($new_node);
                 } else {
                     $refs[$index]->_addChildToCollection($node);
                 }
